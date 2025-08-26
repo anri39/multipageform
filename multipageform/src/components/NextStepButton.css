@@ -1,0 +1,24 @@
+.next-step-btn {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--white);
+  background-color: var(--blue-950);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  position: absolute;
+  bottom: -10rem;
+  right: 6.2rem;
+}
+
+.next-step-btn:hover {
+  background-color: var(--blue-200);
+  color: var(--blue-950);
+}
+
+.next-step-btn:disabled {
+  background-color: var(--grey-500);
+  cursor: not-allowed;
+}

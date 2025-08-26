@@ -1,0 +1,23 @@
+.sidebarcontainer {
+  position: relative;
+  width: 320px;
+  height: 600px;
+  overflow: hidden;
+}
+
+.sidebarcontainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.steps {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
