@@ -12,6 +12,7 @@ function App() {
         <div className="sidecontent">
           <FirstPart
             handleNextStep={() => {
+              if (currentPage === 3) return;
               setCurrentPage(currentPage + 1);
             }}
           />

@@ -26,7 +26,7 @@ export default function FirstPart({ handleNextStep }: FirstPart) {
           <input type="text" placeholder="e.g +1 234 567 890" />
         </div>
       </div>
-      <NextStepButton onClick={handleNextStep} />
+      <NextStepButton onClick={handleNextStep} buttonLabel="Next Step" />
     </div>
   );
 }
