@@ -1,32 +1,35 @@
 import "../components/FirstPart.css";
 import NextStepButton from "./NextStepButton";
 
-type FirstPart = {
+type FirstPartProps = {
   handleNextStep: () => void;
 };
 
-export default function FirstPart({ handleNextStep }: FirstPart) {
+export default function FirstPart({ handleNextStep }: FirstPartProps) {
   return (
     <div className="FirstPart">
       <div className="firstpartHeader">
         <h1>Personal info</h1>
-        <p>Please provide your name, email adress and phone number.</p>
+        <p>Please provide your name, email address and phone number.</p>
       </div>
       <div className="inputs">
-        <div className="name inputrow">
+        <div className="inputrow">
           <p>Name</p>
           <input type="text" placeholder="e.g Stephen King" />
         </div>
-        <div className="email inputrow">
-          <p>Email Adress</p>
+        <div className="inputrow">
+          <p>Email Address</p>
           <input type="email" placeholder="e.g stephenking@lorem.com" />
         </div>
-        <div className="phone inputrow">
+        <div className="inputrow">
           <p>Phone Number</p>
           <input type="text" placeholder="e.g +1 234 567 890" />
         </div>
+
+        <div className="buttonWrapper">
+          <NextStepButton onClick={handleNextStep} buttonLabel="Next Step" />
+        </div>
       </div>
-      <NextStepButton onClick={handleNextStep} buttonLabel="Next Step" />
     </div>
   );
 }

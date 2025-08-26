@@ -8,9 +8,6 @@
   border-radius: 0.5rem;
   cursor: pointer;
   transition: background-color 0.2s;
-  position: absolute;
-  bottom: -10rem;
-  right: 6.2rem;
 }
 
 .next-step-btn:hover {

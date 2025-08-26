@@ -1,0 +1,7 @@
+.backButtonContainer {
+  color: var(--blue-950);
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  cursor: pointer;
+}
