@@ -24,7 +24,7 @@ function App() {
                 setCurrentPage((prev) => (prev === 3 ? prev : prev + 1));
               }}
               goBack={() => {
-                setCurrentPage((prev) => (prev === 3 ? prev : prev - 1));
+                setCurrentPage((prev) => prev - 1);
               }}
             />
           )}
