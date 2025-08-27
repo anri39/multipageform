@@ -1,0 +1,99 @@
+.summaryboxcontainer {
+  width: 100%;
+  background-color: var(--blue-50);
+  border: 1px solid var(--purple-200);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.summaryboxcontainer .title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.summaryboxcontainer .title-row h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--blue-950);
+}
+
+.plan-price {
+  font-size: 1rem;
+  color: var(--blue-950);
+  font-weight: 700;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--purple-200);
+  margin: 4px 0 8px;
+}
+
+.summaryboxcontainer .addon-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.summaryboxcontainer .addon-row p:first-child {
+  color: var(--grey-500);
+  font-size: 1rem;
+}
+
+.summaryboxcontainer .addon-row .addon-price {
+  color: var(--purple-600);
+  font-weight: 500;
+}
+
+.plan {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.change-button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--grey-500);
+  text-decoration: underline;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.change-button:hover {
+  color: var(--purple-600);
+}
+
+.total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.total-row p:first-child {
+  color: var(--grey-500);
+}
+
+.total-price {
+  color: var(--purple-600);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .summaryboxcontainer {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .summaryboxcontainer .title-row h1 {
+    font-size: 1.125rem;
+  }
+}
+
