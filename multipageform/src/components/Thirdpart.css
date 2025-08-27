@@ -1,0 +1,40 @@
+.thirdpartheader h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--blue-950);
+}
+
+.thirdpartheader p {
+  font-size: 1rem;
+  color: var(--grey-500);
+  margin-top: 0.5rem;
+}
+
+.thirdpartcontainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 1rem;
+}
+
+.thirdpartboxes {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+  box-sizing: border-box;
+}
+
+.thirdpartbuttons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+}

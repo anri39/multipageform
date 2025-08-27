@@ -1,36 +1,44 @@
 import { useState } from "react";
-import "./App.css";
 import FirstPart from "./components/FirstPart";
-import SideBar from "./components/SideBar";
 import SecondPart from "./components/SecondPart";
+import ThirdPart from "./components/ThirdPart";
+
+type FormData = {
+  name: string;
+  email: string;
+  addons: {
+    extraStorage: boolean;
+    customProfile: boolean;
+    notifications: boolean;
+  };
+};
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    addons: {
+      extraStorage: false,
+      customProfile: false,
+      notifications: false,
+    },
+  });
+
+  const nextPage = () => setCurrentPage((prev) => Math.min(prev + 1, 3));
+  const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 0));
+
   return (
-    <>
-      <div className="container">
-        <SideBar currentpage={currentPage} />
-        <div className="sidecontent">
-          {currentPage === 0 && (
-            <FirstPart
-              handleNextStep={() => {
-                setCurrentPage((prev) => (prev === 3 ? prev : prev + 1));
-              }}
-            />
-          )}
-          {currentPage === 1 && (
-            <SecondPart
-              handleNextPart={() => {
-                setCurrentPage((prev) => (prev === 3 ? prev : prev + 1));
-              }}
-              goBack={() => {
-                setCurrentPage((prev) => prev - 1);
-              }}
-            />
-          )}
-        </div>
-      </div>
-    </>
+    <div className="container">
+      {currentPage === 0 && <FirstPart handleNextStep={nextPage} />}
+      {currentPage === 1 && (
+        <SecondPart handleNextStep={nextPage} goBack={prevPage} />
+      )}
+      {currentPage === 2 && (
+        <ThirdPart handleNextStep={nextPage} goBack={prevPage} />
+      )}
+    </div>
   );
 }
 

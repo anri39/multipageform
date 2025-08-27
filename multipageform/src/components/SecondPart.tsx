@@ -9,12 +9,12 @@ import { useState } from "react";
 import NextStepButton from "./NextStepButton";
 
 type secondPartProps = {
-  handleNextPart: () => void;
+  handleNextStep: () => void;
   goBack: () => void;
 };
 
 export default function SecondPart({
-  handleNextPart,
+  handleNextStep,
   goBack,
 }: secondPartProps) {
   const [selectedPlan, setSelectedPlan] = useState<string>("Arcade");
@@ -57,7 +57,7 @@ export default function SecondPart({
       <BillingSwitch isYearly={isYearly} onToggle={handleBillingToggle} />
       <div className="buttons">
         <BackButton label="Go Back" onclick={goBack} />
-        <NextStepButton onClick={handleNextPart} buttonLabel="Next Step" />
+        <NextStepButton onClick={handleNextStep} buttonLabel="Next Step" />
       </div>
     </div>
   );
