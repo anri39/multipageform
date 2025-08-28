@@ -1,27 +1,31 @@
-import { useState } from "react";
 import "./AddonsBox.css";
+import type { addonKey } from "./ThirdPart";
 
 type AddonsBoxProps = {
   boxheader: string;
   boxdescription: string;
   price: string;
+  selected: boolean;
+  addonKey: addonKey;
+  onSelect: (key: addonKey) => void;
 };
 
 export default function AddonsBox({
   boxheader,
   boxdescription,
   price,
+  selected,
+  onSelect,
+  addonKey,
 }: AddonsBoxProps) {
-  const [check, setChecked] = useState<boolean>(false);
   return (
-    <div className={`addonscontainer ${check ? "selected" : ""}`}>
-      <input
-        type="checkbox"
-        checked={check}
-        onChange={(e) => {
-          setChecked(e.target.checked);
-        }}
-      />
+    <div
+      className={`addonscontainer ${selected ? "selected" : ""}`}
+      onClick={() => {
+        onSelect(addonKey);
+      }}
+    >
+      <input type="checkbox" checked={selected} readOnly />
       <div className="addontext ">
         <h1>{boxheader}</h1>
         <p>{boxdescription}</p>

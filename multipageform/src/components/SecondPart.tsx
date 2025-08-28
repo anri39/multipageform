@@ -5,22 +5,24 @@ import arcadeIcon from "../assets/images/icon-arcade.svg";
 import proIcon from "../assets/images/icon-pro.svg";
 import advancedIcon from "../assets/images/icon-advanced.svg";
 import BackButton from "./BackButton";
-import { useState } from "react";
 import NextStepButton from "./NextStepButton";
+import type { AppFormData } from "../App";
 
 type secondPartProps = {
   handleNextStep: () => void;
   goBack: () => void;
+  formData: AppFormData;
+  setFormData: React.Dispatch<React.SetStateAction<AppFormData>>;
 };
 
 export default function SecondPart({
   handleNextStep,
   goBack,
+  formData,
+  setFormData,
 }: secondPartProps) {
-  const [selectedPlan, setSelectedPlan] = useState<string>("Arcade");
-  const [isYearly, setIsYearly] = useState<boolean>(false);
-
-  const boxes = isYearly
+  type Plan = "Arcade" | "Pro" | "Advanced";
+  const boxes: { name: Plan; price: string; img: string }[] = formData.isYearly
     ? [
         { name: "Arcade", price: "$90/yr", img: arcadeIcon },
         { name: "Pro", price: "$150/yr", img: proIcon },
@@ -33,7 +35,10 @@ export default function SecondPart({
       ];
 
   const handleBillingToggle = () => {
-    setIsYearly(!isYearly);
+    setFormData((prev) => ({
+      ...prev,
+      isYearly: !prev.isYearly,
+    }));
   };
 
   return (
@@ -49,12 +54,21 @@ export default function SecondPart({
             icon={box.img}
             boxtitle={box.name}
             boxprice={box.price}
-            selected={selectedPlan === box.name}
-            onClick={() => setSelectedPlan(box.name)}
+            selected={formData.selectedPlan === box.name}
+            onClick={() =>
+              setFormData((prev) => ({
+                ...prev,
+                selectedPlan: box.name,
+                planPrice: box.price,
+              }))
+            }
           />
         ))}
       </div>
-      <BillingSwitch isYearly={isYearly} onToggle={handleBillingToggle} />
+      <BillingSwitch
+        isYearly={formData.isYearly}
+        onToggle={handleBillingToggle}
+      />
       <div className="buttons">
         <BackButton label="Go Back" onclick={goBack} />
         <NextStepButton onClick={handleNextStep} buttonLabel="Next Step" />

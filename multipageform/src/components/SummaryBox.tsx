@@ -1,31 +1,61 @@
 import "./SummaryBox.css";
+import type { AppFormData } from "../App";
 
-type SummaryBox = {};
+type SummaryBoxProps = {
+  formData: AppFormData;
+  setPage: () => void;
+};
 
-export default function SummaryBox() {
+export default function SummaryBox({ formData, setPage }: SummaryBoxProps) {
+  const addonNames: Record<string, string> = {
+    extraStorage: "Online service",
+    customProfile: "Larger storage",
+    notifications: "Custom profile",
+  };
+
+  const planPriceNumber = parseInt(formData.planPrice.replace(/\D/g, "")) || 0;
+
+  const addonsTotal = Object.values(formData.addons)
+    .filter((a) => a.selected)
+    .reduce((sum, a) => sum + parseInt(a.price.replace(/\D/g, "")), 0);
+
+  const total = planPriceNumber + addonsTotal;
+
   return (
     <>
       <div className="summaryboxcontainer">
         <div className="title-row">
           <div className="plan">
-            <h1>Arcade (Monthly)</h1>
-            <button className="change-button" type="button">Change</button>
+            <h1>{`${formData.selectedPlan} ${
+              formData.isYearly ? "(Yearly)" : "(Monthly)"
+            }`}</h1>
+            <button
+              className="change-button"
+              type="button"
+              style={{ fontSize: "17px" }}
+              onClick={setPage}
+            >
+              Change
+            </button>
           </div>
-          <p className="plan-price">$9/mo</p>
+          <p className="plan-price">{formData.planPrice}</p>
         </div>
         <div className="divider" />
-        <div className="addon-row">
-          <p>Online service</p>
-          <p className="addon-price">+$1/mo</p>
-        </div>
-        <div className="addon-row">
-          <p>Larger storage</p>
-          <p className="addon-price">+$2/mo</p>
-        </div>
+
+        {Object.entries(formData.addons).map(([key, addon]) =>
+          addon.selected ? (
+            <div className="addon-row" key={key}>
+              <p>{addonNames[key]}</p>
+              <p className="addon-price">{addon.price}</p>
+            </div>
+          ) : null
+        )}
       </div>
       <div className="total-row">
-        <p>Total (per month)</p>
-        <p className="total-price">+$12/mo</p>
+        <p>Total ({formData.isYearly ? "per year" : "per month"})</p>
+        <p className="total-price">
+          ${total}/{formData.isYearly ? "yr" : "mo"}
+        </p>
       </div>
     </>
   );
